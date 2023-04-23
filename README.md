@@ -8,3 +8,5 @@
     Sentinel            1.8.6
     RocketMQ            4.9.4
     Seata               1.6.1
+    snakeyaml           2.0
+    fastjson2           2.0.28
