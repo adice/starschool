@@ -42,7 +42,6 @@ public class Teacher implements Serializable {
     private Date registTime;
     private int loginSuccessCount;
     private int loginFailureCount;  //1天内登录错误次数，超过5次，当天不允许登录
-    @JsonIgnore
     @ManyToMany
     @OrderBy("priority")
     @JoinTable(name = "user_rel_role_teacher",

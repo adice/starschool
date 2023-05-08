@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * @description: TODO
+ * @description: 教师业务逻辑
  * @author: adi
  * @since 2023/4/24 16:42
  */

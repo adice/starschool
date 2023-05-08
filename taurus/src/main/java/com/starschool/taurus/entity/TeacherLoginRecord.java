@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 /**
- * @description: TODO
+ * @description: 教师登录记录
  * @author: adi
  * @since 2023/4/23 16:56
  */

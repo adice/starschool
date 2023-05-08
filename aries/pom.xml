@@ -8,9 +8,9 @@
         <version>0.0.1</version>
     </parent>
     <groupId>com.starschool</groupId>
-    <artifactId>aires</artifactId>
+    <artifactId>aries</artifactId>
     <version>0.0.1</version>
-    <name>aires</name>
+    <name>aries</name>
     <description>网关，用于身份验证、路由、限流等</description>
     <properties>
         <java.version>17</java.version>
@@ -19,6 +19,21 @@
         <skipTests>true</skipTests>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>com.starschool</groupId>
+            <artifactId>common</artifactId>
+            <version>0.0.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-data-jpa</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.mysql</groupId>
+                    <artifactId>mysql-connector-j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -30,6 +45,12 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+        <!-- JWT -->
+        <dependency>
+            <groupId>org.bitbucket.b_c</groupId>
+            <artifactId>jose4j</artifactId>
+            <version>0.9.3</version>
         </dependency>
 
         <dependency>

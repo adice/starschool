@@ -19,8 +19,13 @@ public class TeacherController {
     @Resource
     private TeacherService teacherService;
 
+    @GetMapping("/test/{id}")
+    public String test(@PathVariable("id") int id){
+        System.out.println(id);
+        return "testtest";
+    }
     @GetMapping("/login/{username}")
-    public Teacher list4Login(@PathVariable("username") String username) {
+    public Teacher get4Login(@PathVariable("username") String username) {
         return teacherService.getTeacher(username);
 
     }

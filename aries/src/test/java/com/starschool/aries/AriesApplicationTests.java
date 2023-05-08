@@ -1,10 +1,10 @@
-package com.starschool.aires;
+package com.starschool.aries;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AiresApplicationTests {
+class AriesApplicationTests {
 
     @Test
     void contextLoads() {
