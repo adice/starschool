@@ -43,6 +43,8 @@ public class AriesSecurityConfig {
     private AriesAuthenticationFailureHandler ariesAuthenticationFailureHandler;
     @Resource
     private AriesServerAuthenticationEntryPoint ariesServerAuthenticationEntryPoint;
+    @Resource
+    private AriesServerAccessDeniedHandler ariesServerAccessDeniedHandler;
 
     private static Mono<Authentication> authenticate(Authentication authentication) {
         // 其他登陆方式 (比如手机号验证码登陆) 可在此设置不得抛出异常或者 Mono.error
@@ -66,6 +68,9 @@ public class AriesSecurityConfig {
                 .authenticationSuccessHandler(ariesAuthenticationSuccessHandler)
                 .authenticationFailureHandler(ariesAuthenticationFailureHandler)
                 .authenticationEntryPoint(ariesServerAuthenticationEntryPoint)
+                .and()
+                .exceptionHandling()
+                .accessDeniedHandler(ariesServerAccessDeniedHandler)
                 .and()
                 .logout().disable()
                 .csrf(ServerHttpSecurity.CsrfSpec::disable);

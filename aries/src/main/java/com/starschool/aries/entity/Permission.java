@@ -15,7 +15,7 @@ import java.util.Set;
  */
 @Setter
 @Getter
-public class Resource implements Serializable {
+public class Permission implements Serializable {
     @Serial
     private static final long serialVersionUID = 5065363833846742417L;
     private int id;
@@ -23,8 +23,8 @@ public class Resource implements Serializable {
     private String url;
     private String icon;
     private int priority;
-    private int resourceType;       // 1-菜单，2-其它资源等(例如按钮、超链接)，后续补充
+    private int permissionType;       // 1-菜单，2-其它资源等(例如按钮、超链接)，后续补充
     private int state;      // 1-正常，2-禁用
-    private Resource parentResource;
-    private Set<Resource> childResources = new HashSet<>();
+    private Permission parentPermission;
+    private Set<Permission> childPermissions = new HashSet<>();
 }

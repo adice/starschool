@@ -16,10 +16,10 @@ import java.util.Set;
  * @since 2023/4/23 16:55
  */
 @Entity
-@Table(name = "user_resource")
+@Table(name = "user_permission")
 @Setter
 @Getter
-public class Resource implements Serializable {
+public class Permission implements Serializable {
     @Serial
     private static final long serialVersionUID = 5065363833846742417L;
     @Id
@@ -29,13 +29,13 @@ public class Resource implements Serializable {
     private String url;
     private String icon;
     private int priority;
-    private int resourceType;       // 1-菜单，2-其它资源等(例如按钮、超链接)，后续补充
+    private int permissionType;       // 1-菜单，2-其它资源等(例如按钮、超链接)，后续补充
     private int state;      // 1-正常，2-禁用
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "parent_id")
-    private Resource parentResource;
-    @OneToMany(mappedBy = "parentResource")
+    private Permission parentPermission;
+    @OneToMany(mappedBy = "parentPermission")
     @OrderBy("priority")
-    private Set<Resource> childResources = new HashSet<>();
+    private Set<Permission> childPermissions = new HashSet<>();
 }

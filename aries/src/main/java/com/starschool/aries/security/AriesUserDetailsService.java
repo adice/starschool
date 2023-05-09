@@ -1,5 +1,6 @@
 package com.starschool.aries.security;
 
+import com.starschool.aries.entity.Permission;
 import com.starschool.aries.entity.Role;
 import com.starschool.aries.entity.Teacher;
 import com.starschool.aries.feignclient.TaurusFeignClient;
@@ -57,9 +58,9 @@ public class AriesUserDetailsService implements ReactiveUserDetailsService {
     public void editAuthorities(Teacher teacher) {
         Set<SimpleGrantedAuthority> authorities = new HashSet<>();
         for (Role role : teacher.getRoles()) {
-            for (com.starschool.aries.entity.Resource resource : role.getResources()) {
-               if(StringUtils.hasText(resource.getUrl())){
-                   authorities.add(new SimpleGrantedAuthority(resource.getUrl()));
+            for (Permission permission : role.getPermissions()) {
+               if(StringUtils.hasText(permission.getUrl())){
+                   authorities.add(new SimpleGrantedAuthority(permission.getUrl()));
                }
             }
         }

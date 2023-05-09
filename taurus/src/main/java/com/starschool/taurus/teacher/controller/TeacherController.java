@@ -28,4 +28,9 @@ public class TeacherController {
     public String center(@PathVariable("username") String username){
         return username;
     }
+
+    @GetMapping("/add")
+    public String toAdd(){
+        return "toAdd";
+    }
 }

@@ -24,5 +24,5 @@ public class Role implements Serializable {
     private String name;
     private int priority;
     private int state;      // 1-正常，2-禁用
-    private Set<Resource> resources = new HashSet<>();
+    private Set<Permission> permissions = new HashSet<>();
 }

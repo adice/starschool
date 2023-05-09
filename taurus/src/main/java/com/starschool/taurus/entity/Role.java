@@ -32,9 +32,9 @@ public class Role implements Serializable {
     private int priority;
     private int state;      // 1-正常，2-禁用
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_rel_role_resource",
+    @JoinTable(name = "user_rel_role_permission",
             joinColumns = {@JoinColumn(name = "role_id", foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))},
-            inverseJoinColumns = {@JoinColumn(name = "resource_id", foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))})
-    private Set<Resource> resources = new HashSet<>();
+            inverseJoinColumns = {@JoinColumn(name = "permission_id", foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))})
+    private Set<Permission> permissions = new HashSet<>();
 
 }

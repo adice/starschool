@@ -1,7 +1,5 @@
 package com.starschool.aries.security;
 
-import com.alibaba.fastjson.JSONObject;
-import com.starschool.common.util.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.security.authorization.AuthorizationDecision;
@@ -13,7 +11,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import reactor.core.publisher.Mono;
 
-import java.nio.file.AccessDeniedException;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -49,14 +46,4 @@ public class AriesAuthorizationManager implements ReactiveAuthorizationManager<A
         }).defaultIfEmpty(new AuthorizationDecision(false));
 
     }
-
-//    @Override
-//    public Mono<Void> verify(Mono<Authentication> authentication, AuthorizationContext object) {
-//        return check(authentication, object)
-//                .filter(AuthorizationDecision::isGranted)
-//                .switchIfEmpty(Mono.defer(() -> {
-//                    String body = JSONObject.toJSONString(ResponseResult.failure(403, "permission denied"));
-//                    return Mono.error(new AccessDeniedException(body));
-//                })).flatMap(d -> Mono.empty());
-//    }
 }

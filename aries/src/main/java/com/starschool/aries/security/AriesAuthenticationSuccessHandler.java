@@ -24,7 +24,7 @@ public class AriesAuthenticationSuccessHandler implements ServerAuthenticationSu
         Teacher teacher = (Teacher)authentication.getPrincipal();
         teacher.setPassword(null);
         for (Role role : teacher.getRoles()) {
-            role.setResources(null);
+            role.setPermissions(null);
         }
         return Mono.defer(() -> Mono.just(webFilterExchange.getExchange().getResponse()).flatMap(response -> {
             DataBufferFactory dataBufferFactory = response.bufferFactory();

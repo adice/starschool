@@ -2,10 +2,10 @@ INSERT INTO `user_role` (id, title, name, priority, state) VALUES (1, 'ROLE_admi
 INSERT INTO `user_role` (id, title, name, priority, state) VALUES (2, 'ROLE_teachingsecretary', '教学秘书', 2, 1);
 INSERT INTO `user_role` (id, title, name, priority, state) VALUES (3, 'ROLE_teacher', '教师', 3, 1);
 COMMIT;
-INSERT INTO `user_resource` (id, title, url, priority, resource_type, state) VALUES (1, '教师管理', '', 1, 1, 1);
-INSERT INTO `user_resource` (id, title, url, priority, resource_type, state, parent_id) VALUES (2, '教师列表', '/teacher/list', 1, 1, 1, 1);
-INSERT INTO `user_resource` (id, title, url, priority, resource_type, state, parent_id) VALUES (3, '个人中心', '/teacher/center', 2, 1, 1, 1);
-INSERT INTO `user_resource` (id, title, url, priority, resource_type, state, parent_id) VALUES (4, '添加教师', '/teacher/add', 1, 1, 1, 1);
+INSERT INTO `user_permission` (id, title, url, priority, permission_type, state) VALUES (1, '教师管理', '', 1, 1, 1);
+INSERT INTO `user_permission` (id, title, url, priority, permission_type, state, parent_id) VALUES (2, '教师列表', '/taurus/teacher/list', 1, 1, 1, 1);
+INSERT INTO `user_permission` (id, title, url, priority, permission_type, state, parent_id) VALUES (3, '个人中心', '/taurus/teacher/center/**', 2, 1, 1, 1);
+INSERT INTO `user_permission` (id, title, url, priority, permission_type, state, parent_id) VALUES (4, '添加教师', '/taurus/teacher/add', 1, 1, 1, 1);
 COMMIT;
 -- INSERT INTO `bg_user` (id, name, password, real_name, regist_time, regist_ip, login_count, data_range, state)
 --  VALUES (1, 'admin', '{noop}123456', 'administrator', '2022-7-26', '127.0.0.1', 0, 1, 1);
@@ -15,7 +15,7 @@ COMMIT;
 COMMIT;
 INSERT INTO  `user_rel_role_teacher` (role_id, teacher_username) VALUES (1, 'admin');
 COMMIT;
-INSERT INTO  `user_rel_role_resource` (role_id, resource_id) VALUES (1, 2);
-INSERT INTO  `user_rel_role_resource` (role_id, resource_id) VALUES (1, 3);
-INSERT INTO  `user_rel_role_resource` (role_id, resource_id) VALUES (1, 4);
+INSERT INTO  `user_rel_role_permission` (role_id, permission_id) VALUES (1, 2);
+INSERT INTO  `user_rel_role_permission` (role_id, permission_id) VALUES (1, 3);
+INSERT INTO  `user_rel_role_permission` (role_id, permission_id) VALUES (1, 4);
 COMMIT;
