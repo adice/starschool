@@ -39,6 +39,10 @@ public class AriesSecurityConfig {
     private AriesUserDetailsService ariesUserDetailsService;
     @Resource
     private AriesAuthenticationSuccessHandler ariesAuthenticationSuccessHandler;
+    @Resource
+    private AriesAuthenticationFailureHandler ariesAuthenticationFailureHandler;
+    @Resource
+    private AriesServerAuthenticationEntryPoint ariesServerAuthenticationEntryPoint;
 
     private static Mono<Authentication> authenticate(Authentication authentication) {
         // 其他登陆方式 (比如手机号验证码登陆) 可在此设置不得抛出异常或者 Mono.error
@@ -60,32 +64,12 @@ public class AriesSecurityConfig {
                 .formLogin()
                 .loginPage("/teacher/login")
                 .authenticationSuccessHandler(ariesAuthenticationSuccessHandler)
+                .authenticationFailureHandler(ariesAuthenticationFailureHandler)
+                .authenticationEntryPoint(ariesServerAuthenticationEntryPoint)
                 .and()
                 .logout().disable()
                 .csrf(ServerHttpSecurity.CsrfSpec::disable);
         return httpSecurity.build();
-
-//        SecurityWebFilterChain securityWebFilterChain = httpSecurity
-//                .formLogin()
-//                .loginPage("/teacher/login")
-//                .authenticationManager(ariesTokenAuthenticationManager)
-//                .authenticationSuccessHandler(ariesAuthenticationSuccessHandler)
-//                .and()
-//                .authorizeExchange()
-//                .pathMatchers(whitePaths).permitAll()
-//                .anyExchange().access(ariesAuthorizationManager)
-//                .and()
-//                .csrf(ServerHttpSecurity.CsrfSpec::disable)
-//                .httpBasic().disable()
-//                .build();
-//
-//        securityWebFilterChain.getWebFilters()
-//                .filter(webFilter -> webFilter instanceof AuthenticationWebFilter)
-//                .subscribe(webFilter -> {
-//                    AuthenticationWebFilter filter = (AuthenticationWebFilter) webFilter;
-//                    filter.setServerAuthenticationConverter(ariesAuthenticationConverter);
-//                });
-//        return securityWebFilterChain;
     }
 
     /**
